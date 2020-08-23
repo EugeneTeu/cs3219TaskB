@@ -1,0 +1,12 @@
+{
+  "name": "cs3219-task-b",
+  "version": "1.0.0",
+  "description": "Task B for cs3219",
+  "main": "index.js",
+  "repository": "https://github.com/EugeneTeu/cs3219TaskB.git",
+  "author": "eugene teu <eugeneteu@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
