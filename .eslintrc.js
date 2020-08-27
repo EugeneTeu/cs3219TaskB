@@ -11,7 +11,7 @@ module.exports = {
     },
     plugins: ['@typescript-eslint'],
     rules: {
-        noimplicitAny: false,
+        noimplicitAny: 0,
     },
     extends: ['prettier', 'prettier/@typescript-eslint'],
 };

@@ -5,7 +5,7 @@ export interface Quote extends Document {
 }
 
 const QuoteSchema: Schema = new Schema({
-    title: { type: String, required: true, unique: true },
+    title: { type: String, required: true },
 });
 
 export const QuoteModel = mongoose.model<Quote>('Quote', QuoteSchema);
