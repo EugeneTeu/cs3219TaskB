@@ -13,11 +13,11 @@ router.get('/test', (req, res, next) => {
 
 router.get('/:id', quotesController.getDetailQuote);
 
-router.get('/list', quotesController.getQuotes);
+router.get('/', quotesController.getQuotes);
 
 router.post('/create', quotesController.createQuote);
 
-router.put('/:id', quotesController.updateQuote);
+router.patch('/:id', quotesController.updateQuote);
 
 router.delete('/:id', quotesController.deleteQuote);
 

@@ -8,4 +8,4 @@ const QuoteSchema: Schema = new Schema({
     title: { type: String, required: true },
 });
 
-export const QuoteModel = mongoose.model<Quote>('Quote', QuoteSchema);
+export const QuoteModel = mongoose.model<Quote>('quotes', QuoteSchema);

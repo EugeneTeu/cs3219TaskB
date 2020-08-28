@@ -3,17 +3,6 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import { testRouter, quotesRouter } from './routes';
 
-mongoose.connect('mongodb://localhost/resthub', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-});
-var db = mongoose.connection;
-if (!db) {
-    console.log('Error connecting db');
-} else {
-    console.log('Db connected successfully');
-}
-
 const app = express();
 // Setup server port
 const PORT = process.env.PORT || 8080;
@@ -30,6 +19,23 @@ app.get('/', (req, res) => res.send('Express + TypeScript Server'));
 app.use('/test', testRouter);
 app.use('/quotes', quotesRouter);
 
-app.listen(PORT, () => {
-    console.log(`⚡️[server]: Server is running at https://localhost:${PORT}`);
+mongoose.connect('mongodb://localhost/cs3219-task-b', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
 });
+const db = mongoose.connection;
+if (!db) {
+    console.log('Error connecting db');
+    app.listen(PORT, () => {
+        console.log(
+            `⚡️[server]: Server is running at https://localhost:${PORT} without database`
+        );
+    });
+} else {
+    console.log('Db connected successfully');
+    app.listen(PORT, () => {
+        console.log(
+            `⚡️[server]: Server is running at https://localhost:${PORT}`
+        );
+    });
+}

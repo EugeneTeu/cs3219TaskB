@@ -24,16 +24,9 @@ const getDetailQuote = async (request: Request, response: any) => {
 const getQuotes = async (request: Request, response: any) => {
     try {
         const value = await QuoteModel.find();
-        return response.json({
+        return response.status(200).json({
             data: value,
         });
-
-        /*
-        QuoteModel.find({}, (err: Error, quotes: Quote[]) => {
-            return response.json({
-                data: quotes,
-            });
-        });*/
     } catch (err) {
         console.log(err);
         return response.status(500).send('Error in getting Quotes');
@@ -63,7 +56,10 @@ const createQuote = async (request: Request, response: any) => {
 const deleteQuote = async (request: Request, response: any) => {
     try {
         const { id } = request.params;
-        QuoteModel.deleteOne({ _id: id });
+        await QuoteModel.deleteOne({ _id: id });
+        return response.status(200).json({
+            message: 'Quote deleted!',
+        });
     } catch (err) {
         console.log(err);
         return response.status(500).send('Error in Deleting');
