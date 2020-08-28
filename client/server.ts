@@ -1,4 +1,3 @@
-// dont think we need this, but we can keep this for proxy logic
 import express, { Request, Response } from 'express';
 import next from 'next';
 import bodyParser from 'body-parser';
