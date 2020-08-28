@@ -5,16 +5,10 @@ import { QuoteModel, Quote } from '../model';
 const getDetailQuote = async (request: Request, response: any) => {
     try {
         const { id } = request.params;
-        QuoteModel.findById(id, (err: Error, quote: any) => {
-            if (err) {
-                console.log(err);
-                return response.send(err);
-            }
-
-            return response.json({
-                message: 'this is a single',
-                data: quote,
-            });
+        const quote = await QuoteModel.findById(id);
+        return response.json({
+            message: 'this is a single',
+            data: quote,
         });
     } catch (err) {
         console.log(err);
