@@ -12,6 +12,7 @@ const getDetailQuote = async (request: Request, response: any) => {
             }
 
             return response.json({
+                message: 'this is a single',
                 data: quote,
             });
         });
@@ -25,6 +26,7 @@ const getQuotes = async (request: Request, response: any) => {
     try {
         const value = await QuoteModel.find();
         return response.status(200).json({
+            message: 'this is list api',
             data: value,
         });
     } catch (err) {
@@ -38,14 +40,10 @@ const createQuote = async (request: Request, response: any) => {
         const { title } = request.body;
         const quote = new QuoteModel();
         quote.title = title;
-        quote.save((err: Error) => {
-            if (err) {
-                return response.send(err);
-            }
-            return response.json({
-                message: 'New quote created!',
-                data: quote,
-            });
+        await quote.save();
+        return response.status(200).json({
+            message: 'New quote created!',
+            data: quote,
         });
     } catch (err) {
         console.log(err);
@@ -69,6 +67,11 @@ const deleteQuote = async (request: Request, response: any) => {
 const updateQuote = async (request: Request, response: any) => {
     try {
         const { id } = request.params;
+        const { title } = request.body;
+        await QuoteModel.findByIdAndUpdate({ _id: id }, { title });
+        return response.status(200).json({
+            message: 'Quote updated !',
+        });
     } catch (err) {
         console.log(err);
         return response.status(500).send('Error in updating');
