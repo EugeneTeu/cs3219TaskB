@@ -7,9 +7,11 @@ function App() {
 
     useEffect(() => {
         const apiTest = async () => {
-            const test = await fetch('http://localhost:8080/test');
-            const value = await test.text();
-            setValue(value);
+            const test = await fetch('http://localhost:8080/quotes', {
+                method: 'GET',
+            });
+            const value = await test.json();
+            setValue(JSON.stringify(value));
         };
         apiTest();
     });
