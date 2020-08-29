@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import { testRouter, quotesRouter } from './routes';
+import cors from 'cors';
 
 const app = express();
 // Setup server port
@@ -14,6 +15,7 @@ app.use(
 );
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cors());
 
 app.get('/', (req, res) => res.send('Express + TypeScript Server'));
 
