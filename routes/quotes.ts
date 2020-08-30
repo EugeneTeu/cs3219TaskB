@@ -8,7 +8,7 @@ router.get('/:id', quotesController.getDetailQuote);
 
 router.post('/create', quotesController.createQuote);
 
-router.patch('/:id', quotesController.updateQuote);
+router.put('/:id', quotesController.updateQuote);
 
 router.delete('/:id', quotesController.deleteQuote);
 

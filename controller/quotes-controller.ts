@@ -7,7 +7,7 @@ const getDetailQuote = async (request: Request, response: any) => {
         const { id } = request.params;
         const quote = await QuoteModel.findById(id);
         return response.json({
-            message: 'this is a single',
+            message: 'Quote successfully requested',
             data: quote,
         });
     } catch (err) {
@@ -20,7 +20,7 @@ const getQuotes = async (request: Request, response: any) => {
     try {
         const value = await QuoteModel.find();
         return response.status(200).json({
-            message: 'this is list api',
+            message: 'Quotes successfully requested',
             data: value,
         });
     } catch (err) {
