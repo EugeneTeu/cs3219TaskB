@@ -1,37 +1,75 @@
-import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
+import React, { FC, useState, useEffect } from 'react';
 import './App.css';
+import { Typography, Divider } from 'antd';
 
-function App() {
+import {
+    CreateQuote,
+    GetQuoteList,
+    GetQuoteDetail,
+    UpdateQuote,
+    DeleteQuote,
+} from './components';
+
+const App: FC = () => {
     const [value, setValue] = useState<String>('test value');
 
     useEffect(() => {
-        const apiTest = async () => {
+        const getQuotes = async () => {
             const test = await fetch('http://localhost:8080/quotes', {
                 method: 'GET',
             });
             const value = await test.json();
             setValue(JSON.stringify(value));
         };
-        apiTest();
+        getQuotes();
     });
 
     return (
         <div className="App">
             <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React
-                </a>
-                <p>{value}</p>
+                CS3219 Task B<br></br>
+                Eugene Teu
+                <br></br>
+                Welcome to my API playground
             </header>
+            <div className="background">
+                <h1>Information</h1>
+                <Divider />
+                <p>This api will return quotes</p>
+                <p>The structure of each Quote is as follows:</p>
+                <p>[INSERT QUOTE INFO]</p>
+
+                <h1>Playground</h1>
+                <Divider />
+                <h2>Create Quotes</h2>
+                <Divider />
+                <div className="api-module">
+                    <CreateQuote />
+                </div>
+                <h2>Get Quotes</h2>
+                <Divider />
+                <div className="api-module">
+                    <GetQuoteList />
+                </div>
+                <h2>Get Quotes Detail</h2>
+                <Divider />
+                <div className="api-module">
+                    <GetQuoteDetail />
+                </div>
+                <h2>Update Quote</h2>
+                <Divider />
+                <div className="api-module">
+                    <UpdateQuote />
+                </div>
+
+                <h2>Delete Quotes</h2>
+                <Divider />
+                <div className="api-module">
+                    <DeleteQuote />
+                </div>
+            </div>
         </div>
     );
-}
+};
 
 export default App;
