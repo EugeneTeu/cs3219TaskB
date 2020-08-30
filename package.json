@@ -33,6 +33,7 @@
   },
   "scripts": {
     "start": "yarn nodemon index.ts",
-    "build": "tsc --project ./"
+    "build": "tsc --project ./",
+    "gcp-build": "tsc -p ."
   }
 }

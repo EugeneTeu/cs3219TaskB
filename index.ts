@@ -3,7 +3,6 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import { testRouter, quotesRouter } from './routes';
 import cors from 'cors';
-import mongo from 'mongodb';
 import path from 'path';
 /*
 const MongoClient = mongo.MongoClient;
@@ -38,8 +37,10 @@ app.use('/quotes', quotesRouter);
 app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, '/client/build/index.html'));
 });
+//'mongodb://localhost/cs3219-task-b'
+
 mongoose
-    .connect('mongodb://localhost/cs3219-task-b', {
+    .connect('mongodb://localhost/cs3219-task-b' ?? '', {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     })
