@@ -4,23 +4,11 @@ import mongoose from 'mongoose';
 import { testRouter, quotesRouter } from './routes';
 import cors from 'cors';
 import path from 'path';
-/*
-const MongoClient = mongo.MongoClient;
-const uri = process.env.dbClientString;
-if (!uri) {
-    throw new Error('err');
-}
-const client = new MongoClient(uri, { useNewUrlParser: true });
-client.connect((err) => {
-    const collection = client.db('test').collection('devices');
-    // perform actions on the collection object
-    client.close();
-});*/
 
 const app = express();
 // Setup server port
 const PORT = process.env.PORT || 8080;
-app.use(express.static(path.join(__dirname, '/client/build')));
+app.use(express.static(path.join(__dirname, '../client/build')));
 app.use(
     bodyParser.urlencoded({
         extended: true,
@@ -29,16 +17,13 @@ app.use(
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
-
-app.get('/', (req, res) => res.send('Express + TypeScript Server'));
-
 app.use('/test', testRouter);
 app.use('/quotes', quotesRouter);
 app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, '/client/build/index.html'));
+    res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
-//'mongodb://localhost/cs3219-task-b'
 
+//'mongodb://localhost/cs3219-task-b'
 mongoose
     .connect(
         'mongodb+srv://user1:user1@cluster0.e2rp0.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority' ??
@@ -67,16 +52,3 @@ mongoose
             });
         }
     });
-
-/*
-
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://<username>:<password>@cluster0.e2rp0.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true });
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
-});
-
-    */

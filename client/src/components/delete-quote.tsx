@@ -9,7 +9,7 @@ export const DeleteQuote: FC = () => {
     const handleSubmit = async (
         _: React.MouseEvent<HTMLElement, MouseEvent>
     ) => {
-        const result = await fetch('http://localhost:8080/quotes', {
+        const result = await fetch('/quotes', {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
         });
@@ -21,7 +21,7 @@ export const DeleteQuote: FC = () => {
 
     const handleDelete = async ({ id }: { id: string }) => {
         try {
-            const result = await fetch('http://localhost:8080/quotes/' + id, {
+            const result = await fetch('/quotes/' + id, {
                 method: 'DELETE',
                 headers: { 'Content-Type': 'application/json' },
             });
@@ -34,7 +34,7 @@ export const DeleteQuote: FC = () => {
     };
 
     const getListOfQuotes = useCallback(async () => {
-        const result = await fetch('http://localhost:8080/quotes', {
+        const result = await fetch('/quotes', {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
         });

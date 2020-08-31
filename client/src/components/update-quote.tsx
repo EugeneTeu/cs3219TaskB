@@ -22,7 +22,7 @@ export const UpdateQuote: FC = () => {
         title: string;
     }) => {
         try {
-            const result = await fetch('http://localhost:8080/quotes/' + id, {
+            const result = await fetch('/quotes/' + id, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -44,7 +44,7 @@ export const UpdateQuote: FC = () => {
     };
 
     const getListOfQuotes = useCallback(async () => {
-        const result = await fetch('http://localhost:8080/quotes', {
+        const result = await fetch('/quotes', {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
         });

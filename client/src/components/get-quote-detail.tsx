@@ -15,7 +15,7 @@ export const GetQuoteDetail: FC = () => {
     });
     const handleSubmit = async ({ id }: { id: string }) => {
         try {
-            const result = await fetch('http://localhost:8080/quotes/' + id, {
+            const result = await fetch('/quotes/' + id, {
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' },
             });
@@ -40,7 +40,7 @@ export const GetQuoteDetail: FC = () => {
 
     useEffect(() => {
         const getListOfID = async () => {
-            const result = await fetch('http://localhost:8080/quotes', {
+            const result = await fetch('/quotes', {
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' },
             });

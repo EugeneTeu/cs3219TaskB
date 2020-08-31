@@ -16,7 +16,7 @@ export const CreateQuote: FC = () => {
     };
 
     const handleSubmit = async ({ title }: { title: string }) => {
-        const result = await fetch('http://localhost:8080/quotes/create', {
+        const result = await fetch('/quotes/create', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

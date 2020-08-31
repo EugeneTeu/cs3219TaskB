@@ -11,19 +11,6 @@ import {
 } from './components';
 
 const App: FC = () => {
-    const [value, setValue] = useState<String>('test value');
-
-    useEffect(() => {
-        const getQuotes = async () => {
-            const test = await fetch('http://localhost:8080/quotes', {
-                method: 'GET',
-            });
-            const value = await test.json();
-            setValue(JSON.stringify(value));
-        };
-        getQuotes();
-    });
-
     return (
         <div className="App">
             <header className="App-header">

@@ -9,7 +9,7 @@ export const GetQuoteList: FC = () => {
     const handleSubmit = async (
         _: React.MouseEvent<HTMLElement, MouseEvent>
     ) => {
-        const result = await fetch('http://localhost:8080/quotes', {
+        const result = await fetch('/quotes', {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
         });

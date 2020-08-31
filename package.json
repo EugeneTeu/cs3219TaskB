@@ -32,7 +32,8 @@
     "yarn": ">=1.0.0 <2.0.0"
   },
   "scripts": {
-    "start": "nodemon index.ts",
+    "start": "node build/index.js",
+    "dev": "nodemon index.ts",
     "build": "tsc --project ./",
     "gcp-build": "tsc -p ."
   }
