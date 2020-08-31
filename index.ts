@@ -24,15 +24,12 @@ app.get('/*', (req, res) => {
 });
 
 //'mongodb://localhost/cs3219-task-b'
+//'mongodb+srv://user1:user1@cluster0.e2rp0.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority'
 mongoose
-    .connect(
-        'mongodb+srv://user1:user1@cluster0.e2rp0.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority' ??
-            '',
-        {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        }
-    )
+    .connect('mongodb://localhost/cs3219-task-b' ?? '', {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    })
     .then((_) => {
         const db = mongoose.connection;
         mongoose.set('useFindAndModify', false);
