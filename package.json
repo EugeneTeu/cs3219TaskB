@@ -7,9 +7,11 @@
   "author": "eugene teu <eugeneteu@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@types/chai-http": "^4.2.0",
     "@types/cors": "^2.8.7",
     "@types/mongoose": "^5.7.36",
     "body-parser": "^1.19.0",
+    "chai-http": "^4.3.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongoose": "^5.10.0"
@@ -40,6 +42,6 @@
     "dev": "nodemon index.ts",
     "build": "tsc --project ./",
     "gcp-build": "tsc -p .",
-    "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'tests/**/*.ts'"
+    "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha --exit -r ts-node/register 'tests/**/*.ts '"
   }
 }

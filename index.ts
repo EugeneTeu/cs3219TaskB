@@ -49,3 +49,4 @@ mongoose
             });
         }
     });
+export default app;
