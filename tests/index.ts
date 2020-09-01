@@ -18,7 +18,8 @@ chai.use(chaiHttp);
 chai.should();
 
 describe('GET list of quotes', () => {
-    it('should get all quotes', (done) => {
+    it('should get all quotes', function (done) {
+        this.timeout(0);
         chai.request(app)
             .get('/quotes/')
             .end((err, res) => {
