@@ -8,4 +8,4 @@ Deployed on Google App Engine
 
 Tested with Mocha and chai
 
-CI/CD with Travis
+CI/CD with Travis.
