@@ -8,7 +8,7 @@ script: npm run test
 after_success: npm run coverage
 deploy:
     provider: gae
-    keyfile: cs3219-rest-api-eugene-013e2ceba8ce.json
+    keyfile: cs3219-rest-api-eugene-8bfe56f00bbb.json
     project: 'cs3219-rest-api-eugene'
     on: travis-deploy
 before_install:
