@@ -1,8 +1,16 @@
 language: node_js
 node_js:
-    - 'stable'
+- stable
 install: npm install
 services:
-    - mongodb
+- mongodb
 script: npm run test
 after_success: npm run coverage
+deploy:
+  provider: gae
+  keyfile: YOUR SERVICE ACCOUNT JSON FILE
+  project: YOUR PROJECT ID
+before_install:
+- openssl aes-256-cbc -K $encrypted_42e045efd64f_key -iv $encrypted_42e045efd64f_iv
+  -in cs3219-rest-api-eugene-013e2ceba8ce.json.enc -out cs3219-rest-api-eugene-013e2ceba8ce.json
+  -d
