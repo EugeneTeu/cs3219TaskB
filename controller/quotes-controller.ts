@@ -36,7 +36,7 @@ const createQuote = async (request: Request, response: any) => {
         quote.title = title;
         await quote.save();
         return response.status(200).json({
-            message: 'New quote created!',
+            message: 'New quote created',
             data: quote,
         });
     } catch (err) {
@@ -50,7 +50,7 @@ const deleteQuote = async (request: Request, response: any) => {
         const { id } = request.params;
         await QuoteModel.deleteOne({ _id: id });
         return response.status(200).json({
-            message: 'Quote deleted!',
+            message: 'quote deleted',
         });
     } catch (err) {
         console.log(err);
@@ -64,7 +64,7 @@ const updateQuote = async (request: Request, response: any) => {
         const { title } = request.body;
         await QuoteModel.findByIdAndUpdate({ _id: id }, { title });
         return response.status(200).json({
-            message: 'Quote updated !',
+            message: 'quote updated',
         });
     } catch (err) {
         console.log(err);
