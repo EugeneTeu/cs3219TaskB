@@ -40,11 +40,11 @@ export const DeleteQuote: FC = () => {
         });
         const { message, data }: ApiResponse<Quote[]> = await result.json();
         setList(data);
-    }, [list]);
+    }, []);
 
     useEffect(() => {
         getListOfQuotes();
-    }, []);
+    }, [getListOfQuotes]);
 
     return (
         <>
@@ -68,7 +68,7 @@ export const DeleteQuote: FC = () => {
                                     <div>
                                         <DisplayQuote quote={quote} />
                                         <Button
-                                            color="red"
+                                            danger
                                             onClick={(event) =>
                                                 handleDelete({ id: quote._id })
                                             }

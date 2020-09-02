@@ -50,11 +50,11 @@ export const UpdateQuote: FC = () => {
         });
         const { message, data }: ApiResponse<Quote[]> = await result.json();
         setList(data);
-    }, [list]);
+    }, []);
 
     useEffect(() => {
         getListOfQuotes();
-    }, []);
+    }, [getListOfQuotes]);
 
     return (
         <>

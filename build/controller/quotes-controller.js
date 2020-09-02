@@ -45,7 +45,7 @@ const createQuote = (request, response) => __awaiter(void 0, void 0, void 0, fun
         quote.title = title;
         yield quote.save();
         return response.status(200).json({
-            message: 'New quote created!',
+            message: 'New quote created',
             data: quote,
         });
     }
@@ -59,7 +59,7 @@ const deleteQuote = (request, response) => __awaiter(void 0, void 0, void 0, fun
         const { id } = request.params;
         yield model_1.QuoteModel.deleteOne({ _id: id });
         return response.status(200).json({
-            message: 'Quote deleted!',
+            message: 'quote deleted',
         });
     }
     catch (err) {
@@ -73,7 +73,7 @@ const updateQuote = (request, response) => __awaiter(void 0, void 0, void 0, fun
         const { title } = request.body;
         yield model_1.QuoteModel.findByIdAndUpdate({ _id: id }, { title });
         return response.status(200).json({
-            message: 'Quote updated !',
+            message: 'quote updated',
         });
     }
     catch (err) {
