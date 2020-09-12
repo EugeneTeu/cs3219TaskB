@@ -7,7 +7,7 @@ const layout = {
     wrapperCol: { span: 16 },
 };
 export const GetQuoteDetail: FC = () => {
-    const [listOfId, setListOfId] = useState<string[]>([]);
+    const [list, setList] = useState<Quote[]>([]);
     const [quote, setQuote] = useState<Quote>({
         _id: 'null',
         title: 'empty',
@@ -38,18 +38,19 @@ export const GetQuoteDetail: FC = () => {
         });
     };
 
-    useEffect(() => {
-        const getListOfID = async () => {
-            const result = await fetch('/quotes', {
-                method: 'GET',
-                headers: { 'Content-Type': 'application/json' },
-            });
-            const { message, data }: ApiResponse<Quote[]> = await result.json();
-            const list = data.map((x) => x._id);
-            setListOfId(list);
-        };
-        getListOfID();
+    const getListOfQuotes = useCallback(async () => {
+        const result = await fetch('/quotes', {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
+        });
+        const { message, data }: ApiResponse<Quote[]> = await result.json();
+        setList(data);
     }, []);
+
+    useEffect(() => {
+        getListOfQuotes();
+    }, [getListOfQuotes]);
+
     return (
         <>
             <h3>This endpoint returns a single quote from the api</h3>
@@ -78,6 +79,7 @@ export const GetQuoteDetail: FC = () => {
             <Divider />
             <h3>Response from API:</h3>
             <DisplayQuote quote={quote} />
+            <Button onClick={getListOfQuotes}> Refresh Endpoint</Button>
             <h3>Request any of the following IDs:</h3>
             <Divider />
             <div
@@ -88,14 +90,14 @@ export const GetQuoteDetail: FC = () => {
                 }}
             >
                 <div>
-                    {listOfId.length === 0 ? (
+                    {list.length === 0 ? (
                         <p>There is no quotes currently in the Database</p>
                     ) : (
                         <List>
-                            {listOfId.map((id: string, index: number) => {
+                            {list.map((x: Quote, index: number) => {
                                 return (
                                     <List.Item key={index}>
-                                        <p>Id: {id}</p>
+                                        <p>Id: {x._id}</p>
                                     </List.Item>
                                 );
                             })}
