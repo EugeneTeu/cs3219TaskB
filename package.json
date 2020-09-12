@@ -39,7 +39,7 @@
     "yarn": ">=1.0.0 <2.0.0"
   },
   "scripts": {
-    "start": "node build/index.js",
+    "start": "set NODE_ENV=production && node build/index.js",
     "dev": "nodemon index.ts",
     "build": "tsc --project ./",
     "gcp-build": "tsc -p .",

@@ -20,7 +20,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 app.use('/test', testRouter);
 app.use('/quotes', quotesRouter);
-if (process.env.NODE_ENV !== 'production') {
+console.log(process.env.NODE_ENV);
+if (process.env.NODE_ENV == 'development') {
     app.use(express.static(path.join(__dirname, './client/build')));
     app.get('/*', (req, res) => {
         res.sendFile(path.join(__dirname, './client/build/index.html'));
