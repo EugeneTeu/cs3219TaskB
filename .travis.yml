@@ -4,8 +4,7 @@ node_js:
 install: npm install
 services:
     - mongodb
-# script: npm run test
-# after_success: npm run coverage
+script: npm run test
 deploy:
     provider: gae
     keyfile: cs3219-rest-api-eugene-8bfe56f00bbb.json

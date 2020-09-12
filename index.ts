@@ -20,7 +20,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 app.use('/test', testRouter);
 app.use('/quotes', quotesRouter);
-console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV == 'development') {
     app.use(express.static(path.join(__dirname, './client/build')));
     app.get('/*', (req, res) => {

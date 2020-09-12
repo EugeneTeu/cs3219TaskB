@@ -22,3 +22,7 @@ CI/CD with Travis.
 1. run `npm run-script dev`
 1. Go to [local host 8080](http://localhost:8080/)
 1. Frontend is served and you should be connected directly to the database in mongodb atlas.
+
+## Run tests
+
+1. `npm run-script test`
