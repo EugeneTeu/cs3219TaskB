@@ -54,6 +54,7 @@ export const GetQuoteDetail: FC = () => {
     return (
         <>
             <h3>This endpoint returns a single quote from the api</h3>
+            <p>Please ensure the input is exactly the id, else it will fail</p>
             <Form
                 {...layout}
                 onFinish={onFinish}

@@ -49,7 +49,7 @@ export const DeleteQuote: FC = () => {
     return (
         <>
             <h3>This endpoint returns a list of quotes from the api</h3>
-
+            <Button onClick={getListOfQuotes}> Refresh Endpoint</Button>
             <div
                 style={{
                     minHeight: '5vh',
